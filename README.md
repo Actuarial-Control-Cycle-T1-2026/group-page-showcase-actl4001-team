@@ -60,7 +60,7 @@ In the long term, all 3 solar systems generate highly comparable returns, costs 
 ## Question 3 - Summary of Pricing and Capital Modelling
 
 ### Equipment Failure: 
-![images](q3_BI_figure.png)
+![images](Business_interruption_agg_losses.png)
 
 At a portfolio level, aggregate losses increase from $719M at baseline to $875M under extreme heat stress and $1.09B for solar flare conditions. This models a scenario where equipment failure risk is broadly impacted by environmental stress. Assessing the upper 95th and 99th percentile of aggregate losses, there is a parallel shift in both mean and tail quantiles which suggests that the modelling approach shifts the entire loss distribution to the right. Standard deviation experiences minimal shifts, indicating how these losses are fairly predictable and stable, even under extreme stress. 
 Assessing the distribution shifts in the histograms [L fig.3], it is clear that Epsilon demonstrates the largest shifts between scenarios with Zeta also exhibiting noticeable movement. Assessing the aggregate loss shifts between solar systems, the distribution shape is relatively stable, suggesting that pricing adjustments should primarily account for the uplifts in expected loss instead of emphasis on tail risk loading. 
