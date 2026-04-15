@@ -1,4 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/FxAEmrI0)
 # Actuarial Theory and Practice A - SOA Case Study Report
 > By Leo Lee and Maxwell Wu
 
@@ -11,6 +10,7 @@
 Our product design for Galaxy General Insurance Company (GGIC) consists of a structured premium framework governed by actuarial risk modelling with tailored design features. The premium was based on a frequency-severity approach where expected aggregate losses were calculated along with additional loadings to capture expenses, capital cost, tail risk and target profitability. 
 
 The following equation was used: 
+
 ![images](Premium_formula.png)
 
 Additional product design features included deductibles and claim limitations to address the distinct risk profiles of each hazard type and solar system. Here, insurers are capable of restricting the loss distribution and placing a ceiling on extreme losses which is especially effective for volatile environments. 
@@ -24,10 +24,39 @@ Each risk scenario was assigned a weight, based on their likelihood. The baselin
 
 ![images](revenue_simulation.png)
 
+### Equipment Failure: 
+
+![images](Equipment_failure_premiums.png)
+
+The product demonstrates a deductible and ceiling offering tailored to the characteristics of each solar system with Zeta having the biggest absolute values, reflecting its high severity risk profile which is vulnerable to large, infrequent claims. Projecting across a 10 year period [L fig. 2], there is substantial growth in both aggregate returns and costs. However, profit is retained across all solar systems and even under extreme scenarios (1-in-100), emphasising the importance of dynamic pricing design which ensures sustainability among both expected conditions and tail exposure. For example, Helionis’ aggregate loss distribution is much wider [L fig.4] indicating high volatility in claim loss despite coverage limitations. However, the resilient product design accounts for this by calibrating annual premium loadings (risk and capital), ensuring that profitability is sustained under high-risk cases. 
+
+### Cargo Loss: 
+
+![images](Cargo_loss_premiums.png)
+
+The cargo loss product is designed at a larger scale with deductibles and ceilings reflecting the severity-driven nature of cargo incidents. By centralising coverage between these thresholds, there is minimised exposure to extreme cargo accidents and smaller, attritional losses. Observing the aggregate loss distribution [L fig.5], high risk scenarios tend to widen and shift the distribution rightward. This indicates an exposure to significant tail risk exposure and increased volatility in claim outcomes. To mitigate this, additional capital cost (0.3 mult) and risk loading (0.4 mult) were incorporated into premium calculations to ensure adequate pricing in both expected and 1-in-100 scenarios. Across a 10-year horizon, despite high variances in costs, extreme risk scenarios were managed via dynamic premium calculations where pre-emptive capital allocation enabled sufficient compensation for tail risk [L fig.3].
+
+### Business Interruption:
+
+![images](Business_interruption_premiums.png)
+
+The deductible and ceiling values are comparable, indicating similar circumstances between all solar systems. The Helionis system had the highest deductible, which helps to lower premiums, by reducing the losses faced by the insurer, and serves as an indicator that the Helionis system does not encounter many smaller claims, but is susceptible to events of a greater magnitude occurring. The stable weather and solar flare environment of the Helionis system is a key contributor to this, reducing the overall danger present to mining stations. However, the disturbance and unpredictability of asteroids and gravitational currents within the system can cause significant damage to satellites or infrastructure, prompting the necessity of a higher claim ceiling, to cover more extreme damage. 
+
+Appendix [M fig.1] shows that the Helionis system had the lowest returns and costs comparatively over a 10 year period, being approximately 50% of its counterpart solar systems. This could indicate that the Helionis system represents little risk from an insurer perspective. Epsilon and Zeta had relatively lower standard deviations of cost and revenue relative to their actual values, and could be more attractive locations to focus future insurance expansion on. 
+
+### Workers’ Compensation: 
+
+![images](Work_comp_premiums.png)
+
+The Helionis system had the highest deductible and ceiling, further showing its susceptibility to more severe events. The Epsilon system had the lowest deductible and ceiling, indicating an overall lower severity in the work compensation claims filed within that system, attributable to enhanced safety training and more rigorous safety protocols, due to its toxic atmosphere and climate. 
+[M fig.2] shows that, in the long term, all 3 solar systems generate highly comparable returns, costs and net revenue. Helionis still exhibits the lowest cost, returns and net revenue, reflecting a general lower demand in comparison to other systems. However, [M fig.2] reveals that, despite this, Helionis has the highest 99th percentile revenue out of all solar systems, reinforcing its status as a system where claims are not frequent, but are typically of high severity when they do occur. 
+
+
 ## Question 3 - Summary of Pricing and Capital Modelling
 
 ## Question 4 - Risk Assessment
 ![images](risk_table.png)
+
 Scenario testing was undertaken by constructing models for both claim frequency and severity. A Poisson model was chosen for frequency, and a Gamma model was chosen for severity. A vector of parameters was obtained for each model by creating predictions using frequency data, as it had a more comprehensive account of all policies in place. 100 simulations were then run, with the Poisson model using rPois to generate a claim count, which was then used by the Gamma model to generate a series of claim severities, contributing to the total aggregate loss. The mathematical reasoning behind this workflow can be seen in the following equations: 
 
 ![images](modelling_equations.png)
