@@ -17,6 +17,8 @@ Additional product design features included deductibles and claim limitations to
 
 This integrated approach is detailed in Q2, aligning with the GGIC’s risk management framework. The premium calculation effectively identifies and quantifies risk profiles where claim frequency and severity that is characteristic of the solar system is accounted for. Risk exposure is then managed through deductibles and price ceilings which are calculated based on environmental characteristics to ensure that variable costs are controlled. From a capital management perspective, monetary initiatives against extreme losses were accounted for by pre-emptively offsetting capital allocation through the premium calculation. To support the deployment of the product, scenario analysis for evolving conditions such as solar flares and extreme heat have been provided, ensuring that the ERM framework is adaptable and dynamic against a broad range of situations. 
 
+
+
 ## Question 2 - Product Design
 Our insurance policies have an overall structure comprising a deductible equivalent to 50% of the average claim severity for each solar system, and a ceiling equal to the 90th percentile of the claim severities for that system, which ensures that they are representative of their respective solar systems. Any claims over the ceiling in magnitude will only incur a payout of this ceiling value, while any claims under the deductible threshold will not be paid out by the insurer, but are instead paid out by the policy holder. If in between, the payout is equivalent to the claim amount, less the deductible, which the policy holder covers. The average loss per policyholder was found by dividing the mean aggregate loss by the number of unique policyholders in each solar system, with the results shown in appendix. 
 
@@ -57,11 +59,15 @@ The Helionis system had the highest deductible and ceiling, further showing its 
 In the long term, all 3 solar systems generate highly comparable returns, costs and net revenue. Helionis still exhibits the lowest cost, returns and net revenue, reflecting a general lower demand in comparison to other systems. However, Helionis has the highest 99th percentile revenue out of all solar systems, reinforcing its status as a system where claims are not frequent, but are typically of high severity when they do occur. 
 
 
+
 ## Question 3 - Summary of Pricing and Capital Modelling
 
 ### R Code Snapshot: 
 
-The 
+The R code estimates the frequency and severity of claims through 2 seperate models that returns an expected value of each. 
+The aggregate losses are calculated by randomly generating how many claims and the size of those claims in each row. By summing these rows together, the total loss is obtained. Repeating this for a number of simulations creates a range of possible aggregate loss outcomes which becomes our distribution. 
+
+![images](agg_loss_code.png)
 
 ### Equipment Failure: 
 ![images](Equipment_failure_agg_losses.png)
@@ -100,6 +106,7 @@ Similarly to Business Interruption, the similarity between the medians and means
 ![images](wc_agg_loss.png)
 
 It can be seen that aggregate work compensation loss was relatively similar among the 3 systems under baseline conditions. However, the disparity between Helionis and the other solar systems quickly widens under worsening conditions, with Zeta and Epsilon staying relatively close together. Once again, this is indicative of the more forgiving conditions in the Helionis region, which impact workers to a lesser extent than its colder, harsher counterparts. 
+
 
 
 ## Question 4 - Risk Assessment
@@ -146,7 +153,7 @@ Extreme scenarios were similarly modelled but stress factors were uniquely appli
 
 The simulation results broadly reflect this calibration with a 23% aggregate loss uplift from baseline for a solar flare event and 3.4% uplift for an extreme heat scenario. This aims to align with the nature of cargo loss, where solar flares are acute, correlated shocks that can largely worsen the probability and extent of cargo losses. However, extreme heat acts as a mild, gradual stressor that degrades operating conditions without highly impacting the likelihood and magnitude of incidents. As a result, the scenario model suggests that cargo risk is vulnerable to severe and sudden condition shocks as opposed to moderate environmental deterioration. 
 
-Business Interruption: 
+### Business Interruption: 
 
 ![images](Business_interruption_exploration.png)
 
@@ -158,7 +165,7 @@ The Helionis system experienced a much lower number of business interruption cla
 The Epsilon system experienced the most noticeable jump in aggregate loss between scenarios, with the baseline loss almost doubling under extreme heat. Business operations in the Epsilon system must be highly susceptible to heat, and therefore the insurance policy should account for this by raising premiums, as well as introducing additional charges for this specific occurrence. Aggregate loss in the Helionis system did not change significantly between the 3 levels, and remained low in comparison. As discussed earlier, this can be attributed to the lower number of claims reported overall in the Helionis region, meaning that standard business procedures are not at high risk of disruption. The Zeta system’s losses were close to Epsilon’s at baseline, but grew at a much smaller rate, indicating that environmental incidents impact them at a lesser rate, which could be due to the advanced protection technology active within the Zeta system. 
 
 
-Workers’ Compensation: 
+### Workers’ Compensation: 
 
 ![images](Work_comp_exploration.png)
 
@@ -172,6 +179,8 @@ A quasiPoisson distribution was used to model frequency for worker compensation,
 
 The Helionis solar system experienced the lowest increase in aggregate loss over a change in scenarios, which suggests that it would be the most stable location for mining to occur, and poses the least threat to worker safety. Both the Epsilon and Zeta solar systems displayed a similar level of loss, but with different trends. At its baseline, workers in the Zeta system reported an overall greater cumulative amount than those in the Epsilon system, but this trend was reversed under extreme heat and solar flares. Under normal conditions, the Zeta system poses more of a risk to miners, but the Epsilon system displays a larger variance due to its increasing danger when external variables are present, indicating that insurance policies catering to it must be mindful of this effect. 
 
+
+
 ## Question 5 - Assumptions
 * The distribution of claim counts was assumed to follow a Poisson distribution, while claim severity was assumed to follow a Gamma distribution. This was done to make data simulation possible, in order to explore the ramifications of each risk scenario, but this assumption did not always hold up, and alternate distributions had to be used to fit the data.
 
@@ -180,11 +189,18 @@ The Helionis solar system experienced the lowest increase in aggregate loss over
 * Obtaining formulae for capital costs, risk loading and operational expenses required careful consideration with regards to choosing a coefficient that would prevent the variable from having an excessive impact on the premium, while being feasible in real life
 * The profit margin of 10% was attained through external research using a vehicle insurance provider (greenslips.com.au), which provided real world evidence of a 10% profit margin being a reasonable and fair aim. 
 
+
+
 ## Question 6 - Data Limitations
 A significant limitation of the data was the existence of poor quality variable names and values. For example, some claim counts in the business interruption dataset were negative, which made modelling using Poisson and Gamma GLMs impossible. These values had to be removed before any work or modelling started. Additionally, there was the existence of variable names with ‘garbage’ values, such as ‘Zeta?????_’, that would show up as extra factor levels in GLM models, warping the coefficients and creating difficult, lengthy summary sheets. These values were dealt with by preprocessing the data to only include variable values that had full names, uniform names. 
 
 Additionally, there was a constant presence of statistical outliers in claim_count and claim_amount that created problems with GLM models converging. This was rectified by imposing artificial ‘caps’ on data, to remove some outliers that were having an enormous impact on the data. A similar problem was seen when using these GLMs to form predictions on data, and was handled the same way. 
 
 AI was utilised to support the validation of modelling approaches (Poisson, Gamma, e.t.c), where assumptions and outputs were cross checked with industrial actuarial practices. This included assessing the consistency of model outputs and the reasonableness of our product design including premium levels, ensuring that proposed pricing structures aligned with realistic offerings within the market. 
+
+## Bibliography: 
+
+‘No more CTP insurer profits over 10%’, 2019, accessed 29/3/2026, <No more CTP insurer profits over 10% - greenslips.com.au>. 
+
 
 ![](Actuarial.gif)
