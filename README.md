@@ -135,6 +135,10 @@ Upon fitting policy variables into a frequency model (Poisson GLM) and severity 
 
 The distribution of key variables mentioned above are broadly similar across solar systems with equipment composition being nearly identical and no distribution shifts for other drivers.
 
+The losses for each scenario and solar system can be seen below:
+
+![images](Equipment_failure_loss.png)
+
 A worst-case scenario such as a solar flare is expected to increase both claim frequency and severity due to radiation-induced equipment failures. Its impact is varied by solar system, starting with Epsilon which experiences an 83% increase in aggregate losses driven by significant increase in claim likelihood (1.4x) justified by volatile environments (operations under a fast-burning star) and costly repair escalation (1.3x) when conditions worsen. Zeta also shows significant uplift (49%), driven by moderate exposure to solar flare activity and extreme conditions (volcanic activity) which is predisposed to operational disruptions. Helionis experiences minimal loss uplift (16%), reflecting its predictable and stable solar conditions which cushion the extent of disruption. 
 
 A moderate case such as an extreme heat scenario outlines a different narrative where Epsilon has the largest uplift (39%) due to its sensitivity to thermal stress in already high temperature environments, accelerating equipment wear and repair costs. Zeta at baseline experiences geological instability in volcanic mining environments, exacerbating failure rates with a more mild 17% aggregate loss increase. Helionis Cluster’s stable and temperate conditions justify a moderate impact of 7%. Unlike solar flare events, extreme heat magnifies wear and tear which leads to more gradual and nuanced impact to claim dynamics. 
@@ -151,6 +155,10 @@ However, the Gamma GLM for claim severity demonstrates variable insights with in
 
 Extreme scenarios were similarly modelled but stress factors were uniquely applied to known variables that were directly exposed to environmental shocks. For a solar flare scenario, a 2x spike on solar_radiation was applied to reflect the significant spike in radiation exposure which is capable of impacting cargo integrity and disrupting navigation systems. A 1.5x increase in route_risk was incorporated to capture operational disruptions that weren’t fully represented such as rerouting and unknown transit risk. For extreme heat, more mild multipliers of 1.4x and 1.1x were applied respectively to demonstrate a more gradual and incremental impact on transport integrity which are less likely to trigger a system-wide disruption as a solar flare. 
 
+The losses for each scenario can be seen below:
+
+![images](Cargo_loss.png)
+
 The simulation results broadly reflect this calibration with a 23% aggregate loss uplift from baseline for a solar flare event and 3.4% uplift for an extreme heat scenario. This aims to align with the nature of cargo loss, where solar flares are acute, correlated shocks that can largely worsen the probability and extent of cargo losses. However, extreme heat acts as a mild, gradual stressor that degrades operating conditions without highly impacting the likelihood and magnitude of incidents. As a result, the scenario model suggests that cargo risk is vulnerable to severe and sudden condition shocks as opposed to moderate environmental deterioration. 
 
 ### Business Interruption: 
@@ -160,6 +168,10 @@ The simulation results broadly reflect this calibration with a 23% aggregate los
 A Poisson GLM was used to model claim frequency, and a Gamma GLM used to model claim severity. The risk of each scenario was calculated by first building these models for frequency and severity respectively. Through analysis of coefficients in the Poisson model, an increase in exposure resulted in the biggest increase in claim count, which is expected, as policies that exist over a longer time period would naturally have more claims. Conversely, an increase in average crew experience and maintenance frequency would result in lower claim counts, highlighting the importance of proficiency and equipment quality in foreign, hostile environments. The Gamma model, shows production load as having a negative impact on claim amounts. This is attributable to stations with higher production load naturally being better equipped to handle it, requiring more rigorous standards of safety and protocol that decrease the severity and likelihood of business interruption
 
 The Helionis system experienced a much lower number of business interruption claims and total exposure than Zeta and Epsilon, which each experienced similar levels of both. However, the Helionis system saw the claims with the highest average severity, nearly 10% greater than the next highest, and consequently, highest annual premiums. Additionally, their claim frequency was  comparable to other systems. This indicates that the number of disruptive events, such as solar flares, is lower due to Helionis’ low flare and wind activity, but that each event causes damage comparable to those in other solar systems. 
+
+The losses for each scenario and solar system can be seen below:
+
+![images](Business_interruption_loss.png)
 
 The Epsilon system experienced the most noticeable jump in aggregate loss between scenarios, with the baseline loss almost doubling under extreme heat. Business operations in the Epsilon system must be highly susceptible to heat, and therefore the insurance policy should account for this by raising premiums, as well as introducing additional charges for this specific occurrence. Aggregate loss in the Helionis system did not change significantly between the 3 levels, and remained low in comparison. As discussed earlier, this can be attributed to the lower number of claims reported overall in the Helionis region, meaning that standard business procedures are not at high risk of disruption. The Zeta system’s losses were close to Epsilon’s at baseline, but grew at a much smaller rate, indicating that environmental incidents impact them at a lesser rate, which could be due to the advanced protection technology active within the Zeta system. 
 
@@ -175,6 +187,10 @@ The coefficients of the model were calculated for claim counts, across all 3 sol
 Sprains and cuts cost the most in total over all 3 solar systems. It can be noted that stress played a bigger factor in the Helionis and Zeta systems than Epsilon, suggesting that workers find those environments or work stations more hostile. Possibilities of hostile work environments are further enhanced by the injury causes provided, which were categorically analysed, showing that violence incurs a significant cost in the Zeta system compared to the other 2 solar systems.
 
 A quasiPoisson distribution was used to model frequency for worker compensation, as the workers’ compensation data had multiple rows with duplicate policy_ids to account for other variables, and consequently, multiple repeated rows of 0 claims. This created an unreasonable increase in variance, which the quasiPoisson model accounts for better through its handling of dispersion. Variables ‘claim_length’, ‘injury_type’ and ‘injury_cause’ were present in the severity data but not the frequency, and were therefore excluded when modelling, as the severity model was used on frequency data, which would have been invalid. 
+
+The losses for each scenario and solar system can be seen below:
+
+![images](Work_comp_loss.png)
 
 The Helionis solar system experienced the lowest increase in aggregate loss over a change in scenarios, which suggests that it would be the most stable location for mining to occur, and poses the least threat to worker safety. Both the Epsilon and Zeta solar systems displayed a similar level of loss, but with different trends. At its baseline, workers in the Zeta system reported an overall greater cumulative amount than those in the Epsilon system, but this trend was reversed under extreme heat and solar flares. Under normal conditions, the Zeta system poses more of a risk to miners, but the Epsilon system displays a larger variance due to its increasing danger when external variables are present, indicating that insurance policies catering to it must be mindful of this effect. 
 
@@ -199,6 +215,4 @@ AI was utilised to support the validation of modelling approaches (Poisson, Gamm
 
 ## Bibliography: 
 
-‘No more CTP insurer profits over 10%’, 2019, accessed 29/3/2026, <No more CTP insurer profits over 10% - greenslips.com.au>. 
-
-![](Actuarial.gif)
+_No more CTP insurer profits over 10%_ 2019, accessed 29 March 2026, <https://www.greenslips.com.au/news/no-more-ctp-insurer-profits-over-10.html>. 
