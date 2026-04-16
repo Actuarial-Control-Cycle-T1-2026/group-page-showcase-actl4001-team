@@ -199,6 +199,4 @@ AI was utilised to support the validation of modelling approaches (Poisson, Gamm
 
 ## Bibliography: 
 
-‘No more CTP insurer profits over 10%’, 2019, accessed 29/3/2026, <No more CTP insurer profits over 10% - greenslips.com.au>. 
-
-![](Actuarial.gif)
+_No more CTP insurer profits over 10%_ 2019, accessed 29 March 2026, <https://www.greenslips.com.au/news/no-more-ctp-insurer-profits-over-10.html>. 
