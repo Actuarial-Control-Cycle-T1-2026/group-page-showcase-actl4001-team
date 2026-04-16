@@ -101,7 +101,7 @@ The aggregate baseline loss graphs in clearly show that the Helionis solar syste
 ### Workers’ Compensation: 
 ![images](Work_com_agg_losses.png)
 
-Similarly to Business Interruption, the similarity between the medians and means of the 3 scenarios in [M fig.4] (shown above) indicate a largely symmetric loss distribution. The range between consecutive quantiles in fig. 4 largely remains between $2-3 billion, with a smaller gap at the 90-95th percentile range.  The 95-99th percentile gap is equivalent to approximately $3 billion, and is heavily indicative of a fatter tail, suggesting that many injuries concerning workers have the capability to be catastrophic, and that more rigorous personnel management and welfare is required in order to ensure the wellbeing and safety of all staff within mining stations. 
+Similarly to Business Interruption, the similarity between the medians and means of the 3 scenarios indicate a largely symmetric loss distribution. The range between consecutive quantiles largely remains between $2-3 billion, with a smaller gap at the 90-95th percentile range.  The 95-99th percentile gap is equivalent to approximately $3 billion, and is heavily indicative of a fatter tail, suggesting that many injuries concerning workers have the capability to be catastrophic, and that more rigorous personnel management and welfare is required in order to ensure the wellbeing and safety of all staff within mining stations. 
 
 ![images](wc_agg_loss.png)
 
